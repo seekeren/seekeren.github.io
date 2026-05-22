@@ -1,0 +1,26 @@
+baseURL: "https://seekeren.github.io/"
+languageCode: "zh-CN"
+title: "seekeren blog"
+theme: PaperMod
+
+params:
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  comments: true
+
+menu:
+  main:
+    - name: 开发记录
+      url: /tags/dev/
+      weight: 10
+    - name: 生活记录
+      url: /tags/life/
+      weight: 20
+    - name: 标签
+      url: /tags/
+      weight: 30
+    - name: 关于
+      url: /about/
+      weight: 40
