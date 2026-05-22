@@ -8,7 +8,26 @@ params:
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
+  ShowBreadCrumbs: true        # 面包屑导航
+  ShowCodeCopyButtons: true    # 代码块复制按钮
+  ShowToc: true                # 显示目录
+  TocOpen: false               # 目录默认折叠
   comments: true
+
+# 首页简介
+homeInfoParams:
+  Title: "Hi, 我是 seekeren 👋"
+  Content: "这里记录我的开发笔记和生活随想"
+
+# 社交链接（首页显示）
+socialIcons:
+  - name: github
+    url: "https://github.com/seekeren"
+
+# 封面图默认设置
+cover:
+  hiddenInList: true        # 列表页显示封面
+  hiddenInSingle: false      # 文章页显示封面
 
 outputs:
   home:
@@ -30,4 +49,12 @@ menu:
     - name: 关于
       url: /about/
       weight: 50
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true             # 允许 HTML 嵌入 Markdown
+  highlight:
+    style: github              # 代码高亮主题
+    lineNos: false             # 显示行号
     
