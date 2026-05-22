@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr" class="h-full">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Posts | seekeren blog</title>
+<link rel="canonical" href="http://localhost:1313/posts/">
+<meta name="description" content="seekeren blog">
+
+<meta property="og:site_name" content="seekeren blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Posts">
+<meta property="og:description" content="seekeren blog">
+<meta property="og:url" content="http://localhost:1313/posts/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://avatars.githubusercontent.com/seekeren">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="seekeren blog">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/seekeren">
+
+
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1220">
+<script>
+  (function() {
+    try {
+      var t = localStorage.getItem('theme');
+      var dark = t ? (t === 'dark') : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (dark) document.documentElement.classList.add('dark');
+    } catch (_) {}
+  })();
+  </script>
+<style>
+   
+  html.dark, html.dark body { background-color: #0b1220; }
+  html { color-scheme: light dark; }
+  </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+<link rel="preconnect" href="https://busuanzi.ibruce.info" crossorigin>
+
+
+<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+<link rel="manifest" href="/favicon/site.webmanifest" />
+
+
+
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="/css/main.css">
+      
+    
+  
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  
+      <script src="/js/main.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ],
+      throwOnError: false
+    });
+
+    document.querySelectorAll('[data-code-block]').forEach(function(block) {
+      const copyButton = block.querySelector('.copy-button');
+      if (!copyButton) return;
+
+      function getCodeText() {
+        const selectors = [
+          '.code-highlight-variant code[data-lang]',
+          '.code-highlight-variant td:last-child code',
+          '.code-highlight-variant code:last-of-type'
+        ];
+
+        for (const selector of selectors) {
+          const codeElement = block.querySelector(selector);
+          const code = (codeElement && codeElement.textContent) ? codeElement.textContent.replace(/\n$/, '') : '';
+          if (code) return code;
+        }
+
+        return '';
+      }
+
+      copyButton.addEventListener('click', function() {
+        const code = getCodeText();
+        if (!code) return;
+
+        navigator.clipboard.writeText(code).then(function() {
+          copyButton.setAttribute('aria-label', 'Copied');
+          copyButton.setAttribute('title', 'Copied');
+          copyButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+
+          setTimeout(function() {
+            copyButton.setAttribute('aria-label', 'Copy code');
+            copyButton.setAttribute('title', 'Copy code');
+            copyButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>';
+          }, 1600);
+        });
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    const footnoteBacklinks = document.querySelectorAll('.footnote-backref');
+    
+    footnoteBacklinks.forEach(function(backlink) {
+      backlink.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        
+        const href = backlink.getAttribute('href');
+        
+        if (href) {
+          
+          const target = document.querySelector(href);
+          
+          if (target) {
+            
+            target.scrollIntoView({ behavior: 'smooth' });
+            
+            
+            target.classList.add('footnote-highlight');
+            setTimeout(function() {
+              target.classList.remove('footnote-highlight');
+            }, 2000);
+          }
+        }
+      });
+    });
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    
+    (function themeInit() {
+      const storageKey = 'theme';
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+
+      function systemPrefersDark() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      function currentPref() {
+        const v = localStorage.getItem(storageKey);
+        if (v === 'dark') return 'dark';
+        if (v === 'light') return 'light';
+        return systemPrefersDark() ? 'dark' : 'light';
+      }
+
+      function apply(theme) {
+        root.classList.toggle('dark', theme === 'dark');
+        if (btn) btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        if (btn) btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+
+      let theme = currentPref();
+      apply(theme);
+
+      if (btn) {
+        btn.addEventListener('mousedown', function (e) {
+          e.preventDefault();
+        });
+
+        btn.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          localStorage.setItem(storageKey, theme);
+          apply(theme);
+          btn.blur();
+        });
+      }
+
+      
+      try {
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const handler = function () {
+          const explicit = localStorage.getItem(storageKey);
+          if (!explicit) { theme = currentPref(); apply(theme); }
+        };
+        if (media && media.addEventListener) media.addEventListener('change', handler);
+        else if (media && media.addListener) media.addListener(handler);
+      } catch (_) {}
+    })();
+    let currentHighlighted = null;
+    let scrollArmTimer = null;
+
+    function removeHandlers() {
+      window.removeEventListener('scroll', clearOnce);
+      window.removeEventListener('keydown', clearOnce);
+      window.removeEventListener('pointerdown', clearOnce);
+      window.removeEventListener('touchstart', clearOnce);
+    }
+
+    function clearOnce() {
+      if (currentHighlighted) {
+        currentHighlighted.classList.remove('anchor-highlight');
+        currentHighlighted = null;
+      }
+      removeHandlers();
+    }
+
+    function headerHeight() {
+      const hd = document.querySelector('body > header');
+      return hd ? hd.getBoundingClientRect().height : 0;
+    }
+
+    function scrollToTarget(el) {
+      if (!el) return;
+      const offset = headerHeight() + 8; 
+      const rect = el.getBoundingClientRect();
+      const top = window.pageYOffset + rect.top - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    function pickHighlightTarget(el) {
+      if (!el) return null;
+      
+      
+      if (el.tagName === 'IMG') return el;
+      
+      if (el.classList && (el.classList.contains('katex-display') || el.classList.contains('katex'))) return el;
+      
+      if (el.tagName === 'SPAN') {
+        const img = el.querySelector('img');
+        if (img) return img;
+        const kx = el.querySelector('.katex-display, .katex');
+        if (kx) return kx;
+        
+        return el;
+      }
+      
+      const head = el.closest('h1,h2,h3,h4,h5,h6');
+      if (head) return head;
+      
+      const code = el.closest('.code-block-container');
+      if (code) return code;
+      
+      const math = el.closest('.katex-display');
+      if (math) return math;
+      
+      const blk = el.closest('pre,figure,table,blockquote,li');
+      if (blk) return blk;
+      
+      if (el.closest('p')) return el;
+      return el;
+    }
+
+    function highlightById(id) {
+      if (!id) return;
+      try { id = decodeURIComponent(id); } catch (e) {}
+      const el = document.getElementById(id);
+      if (!el) return;
+      const target = pickHighlightTarget(el);
+      if (currentHighlighted && currentHighlighted !== target) {
+        currentHighlighted.classList.remove('anchor-highlight');
+      }
+      target.classList.add('anchor-highlight');
+      currentHighlighted = target;
+      
+      setTocActive(id);
+      scrollToTarget(target);
+      
+      removeHandlers();
+      
+      window.addEventListener('keydown', clearOnce, { once: true });
+      window.addEventListener('pointerdown', clearOnce, { once: true });
+      window.addEventListener('touchstart', clearOnce, { once: true });
+      if (scrollArmTimer) clearTimeout(scrollArmTimer);
+      scrollArmTimer = setTimeout(() => {
+        window.addEventListener('scroll', clearOnce, { once: true });
+      }, 1500);
+    }
+
+    
+    if (location.hash && location.hash.length > 1) {
+      
+      setTimeout(() => highlightById(location.hash.slice(1)), 0);
+    }
+
+    
+    window.addEventListener('hashchange', function () {
+      if (location.hash && location.hash.length > 1) {
+        highlightById(location.hash.slice(1));
+      }
+    });
+
+    
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      
+      if (a.classList && a.classList.contains('heading-anchor')) return;
+      const href = a.getAttribute('href');
+      if (!href || href === '#' || href.length < 2) return;
+      const id = href.slice(1);
+      if (!document.getElementById(id)) return; 
+      e.preventDefault();
+      if (history.pushState) { history.pushState(null, '', '#' + id); }
+      else { location.hash = id; }
+      highlightById(id);
+    }, true);
+
+    
+    window.addEventListener('popstate', function () {
+      if (location.hash && location.hash.length > 1) highlightById(location.hash.slice(1));
+    });
+
+    function setTocActive(id) {
+      try { id = decodeURIComponent(id); } catch (e) {}
+      const toc = document.getElementById('TableOfContents');
+      if (!toc) return;
+      const esc = (window.CSS && CSS.escape) ? CSS.escape : (s)=>String(s).replace(/[^a-zA-Z0-9_\-]/g, '\\$&');
+      toc.querySelectorAll('a.toc-active').forEach(a => a.classList.remove('toc-active'));
+      const link = toc.querySelector('a[href="#' + esc(id) + '"]');
+      if (link) link.classList.add('toc-active');
+    }
+
+    
+    function copyText(text) {
+      if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      return new Promise(function (resolve, reject) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.left = '-1000px'; ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.focus(); ta.select();
+          try { ta.setSelectionRange(0, ta.value.length); } catch (_) {}
+          const ok = document.execCommand && document.execCommand('copy');
+          document.body.removeChild(ta);
+          ok ? resolve() : reject(new Error('copy failed'));
+        } catch (e) { reject(e); }
+      });
+    }
+
+    
+    (function addHeadingAnchorCopy() {
+      const container = document.querySelector('article .prose');
+      if (!container) return;
+      const heads = container.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+      heads.forEach((h) => {
+        const id = h.getAttribute('id');
+        if (!id) return;
+        let a = h.querySelector('.heading-anchor');
+        if (!a) {
+          a = document.createElement('a');
+          a.className = 'heading-anchor';
+          a.href = '#' + id;
+          a.setAttribute('aria-label', 'Copy link to this section');
+          a.innerHTML = '<svg viewBox="0 0 1024 1024" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M633.417143 429.007238a174.567619 174.567619 0 0 1 0 246.857143l-155.306667 155.306667a186.709333 186.709333 0 1 1-264.045714-264.045715l76.483048-76.507428 51.73638 51.736381-76.507428 76.507428a113.566476 113.566476 0 1 0 160.597333 160.597334l155.306667-155.306667a101.424762 101.424762 0 0 0 0-143.408762z m208.603428-225.816381a186.709333 186.709333 0 0 1 0 264.045714L765.561905 543.744l-51.736381-51.712 76.507428-76.507429a113.566476 113.566476 0 1 0-160.597333-160.597333l-155.306667 155.306667a101.424762 101.424762 0 0 0 0 143.408762l-51.736381 51.736381a174.567619 174.567619 0 0 1 0-246.857143l155.306667-155.306667a186.709333 186.709333 0 0 1 264.045714 0z"/></svg>';
+          h.appendChild(a);
+        }
+        function copyPermalink() {
+          const url = location.origin + location.pathname + '#' + id;
+          const done = function () {
+            a.classList.add('copied');
+            a.setAttribute('aria-label', 'Copied');
+            setTimeout(() => { a.classList.remove('copied'); a.setAttribute('aria-label', 'Copy link to this section'); }, 1200);
+          };
+          copyText(url).then(done).catch(done);
+        }
+        a.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); copyPermalink(); });
+
+        
+        h.classList.add('heading-clickable');
+        h.addEventListener('click', function (e) {
+          if (e.target.closest('a') && !e.target.closest('.heading-anchor')) return; 
+          copyPermalink();
+        });
+      });
+
+      
+      document.addEventListener('click', function (e) {
+        const btn = e.target.closest('a.heading-anchor');
+        if (!btn) return;
+        
+        e.preventDefault(); e.stopPropagation();
+        const href = btn.getAttribute('href') || '';
+        const id = href.startsWith('#') ? href.slice(1) : '';
+        const url = href.startsWith('#') ? (location.origin + location.pathname + href) : href;
+        copyText(url).finally(() => {
+          btn.classList.add('copied'); btn.setAttribute('aria-label', 'Copied');
+          setTimeout(() => { btn.classList.remove('copied'); btn.setAttribute('aria-label', 'Copy link to this section'); }, 1200);
+          if (id) {
+            try { if (history.pushState) history.pushState(null, '', '#' + id); else location.hash = id; } catch (_) {}
+            try { highlightById(id); } catch (_) {}
+          }
+        });
+      }, false);
+    })();
+  });
+</script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</head>
+<body class="flex flex-col bg-gray-50 font-bilingual">
+  <header class="fixed top-0 left-0 z-30 w-full bg-white shadow-sm">
+    <div class="w-full max-w-4xl mx-auto px-6 overflow-x-auto sm:overflow-visible">
+      <div class="flex items-center justify-between py-3">
+  <div class="text-lg sm:text-xl font-bold flex-shrink-0 max-w-[40%] sm:max-w-md truncate">
+    <a href="/" class="no-underline transition-colors text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-300">
+      seekeren blog
+    </a>
+  </div>
+  <div class="flex items-center gap-2">
+    
+  <nav class="flex justify-end w-full whitespace-nowrap">
+    <ul class="list-none flex flex-row items-center space-x-2 sm:space-x-4 md:space-x-6 py-2">
+    <li class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white text-base sm:text-lg">
+      <a
+        class="px-2 py-1 sm:px-3 sm:py-2 rounded hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" href="/">首页</a>
+    </li>
+    <li class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white text-base sm:text-lg">
+      <a
+        class="px-2 py-1 sm:px-3 sm:py-2 rounded hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" aria-current="page" class="active font-bold" href="/posts/">开发记录</a>
+    </li>
+    <li class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white text-base sm:text-lg">
+      <a
+        class="px-2 py-1 sm:px-3 sm:py-2 rounded hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" href="/tags/">标签</a>
+    </li>
+    <li class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white text-base sm:text-lg">
+      <a
+        class="px-2 py-1 sm:px-3 sm:py-2 rounded hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">关于</a>
+    </li>
+    </ul>
+  </nav>
+
+    <button id="theme-toggle" type="button" class="theme-toggle theme-toggle-btn ml-2 relative inline-flex h-7 w-7 items-center justify-center p-0 bg-transparent border-0 text-gray-700 dark:text-gray-200 focus:outline-none cursor-pointer" aria-label="Toggle dark mode" aria-pressed="false">
+      
+      <svg class="icon-sun h-full w-full" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M512 192c179.2 0 320 140.8 320 320s-140.8 320-320 320-320-140.8-320-320S332.8 192 512 192M512 128C300.8 128 128 300.8 128 512s172.8 384 384 384 384-172.8 384-384S723.2 128 512 128L512 128z" fill="currentColor"></path>
+        <path d="M544 416l236.8 0C774.4 403.2 768 384 761.6 371.2L544 371.2 544 416z" fill="currentColor"></path>
+        <path d="M544 608l0 44.8 217.6 0c6.4-12.8 12.8-32 19.2-44.8L544 608z" fill="currentColor"></path>
+        <path d="M544 723.2 544 768 640 768c25.6-12.8 44.8-25.6 64-44.8L544 723.2z" fill="currentColor"></path>
+        <path d="M800 492.8l-256 0 0 44.8 256 0c0-6.4 0-12.8 0-25.6S800 499.2 800 492.8z" fill="currentColor"></path>
+        <path d="M544 300.8 704 300.8c-19.2-19.2-38.4-32-64-44.8L544 256 544 300.8z" fill="currentColor"></path>
+      </svg>
+      
+      <svg class="icon-moon h-full w-full" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M512 832c-179.2 0-320-140.8-320-320s140.8-320 320-320 320 140.8 320 320S691.2 832 512 832M512 896c211.2 0 384-172.8 384-384s-172.8-384-384-384S128 300.8 128 512 300.8 896 512 896L512 896zM800 512c0-160-128-288-288-288l0 576C672 800 800 672 800 512zM480 608 243.2 608C249.6 620.8 256 640 262.4 652.8l217.6 0L480 608zM480 416 480 371.2 262.4 371.2C256 384 249.6 403.2 243.2 416L480 416zM480 300.8 480 256 384 256C358.4 268.8 339.2 281.6 320 300.8L480 300.8zM224 537.6l256 0L480 492.8l-256 0c0 6.4 0 12.8 0 19.2S224 524.8 224 537.6zM480 723.2 320 723.2c19.2 19.2 38.4 32 64 44.8l96 0L480 723.2z" fill="currentColor"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+    </div>
+  </header>
+  
+  <div class="flex-1 flex flex-col min-h-screen pt-24">
+    <main class="flex-1 w-full max-w-4xl mx-auto px-6 overflow-x-auto sm:overflow-visible">
+      
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Posts</h1>
+    
+    <div class="space-y-16">
+      
+      <div class="relative">
+        
+        <div class="mb-6 flex items-center">
+          <div class="year-indicator-badge flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 dark:from-slate-700/40 dark:to-slate-800/40 flex items-center justify-center text-blue-700 dark:text-blue-300 font-bold text-xl shadow-sm">
+            2026
+          </div>
+          <div class="ml-4 h-px bg-gradient-to-r from-blue-200 dark:from-slate-600 to-transparent flex-grow"></div>
+        </div>
+        
+        
+        <div class="ml-8 space-y-6">
+          
+          <div class="relative">
+            <a href="/posts/first-post/" class="absolute inset-0 z-10" aria-label="First Post"></a>
+            <div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
+              <div class="p-5">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-3">
+                  <h3 class="text-xl font-medium text-gray-800 dark:text-gray-100 group-hover:text-blue-600 transition-colors">
+                    First Post
+                  </h3>
+                  <time class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0 sm:ml-4 flex-shrink-0 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    May 21
+                  </time>
+                </div>
+                
+                
+                <div class="text-gray-600 dark:text-gray-300 text-sm line-clamp-2">
+                   java 1 2 3 4 5 6 7 8 9 10 11 12 public static void sendMsg(DataPacket prototype) { for (Channel channel : clients) { if …
+                </div>
+                
+                
+                
+                
+                <div class="mt-4">
+                  <span class="inline-flex items-center text-blue-600 text-sm group-hover:translate-x-1 transition-transform duration-300">
+                    Read more
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+    
+  </div>
+
+    </main>
+  </div>
+  
+  <footer class="w-full max-w-4xl mx-auto px-6 overflow-x-auto sm:overflow-visible">
+    <div class="py-8 border-t border-gray-200 bg-gray-50 shadow-inner mt-10">
+  <div class="container mx-auto px-4 max-w-4xl">
+    
+     
+     
+       
+         
+       
+     
+       
+         
+       
+    
+
+    
+    <div class="flex justify-center space-x-8">
+      
+      
+      <div class="transform transition duration-200 hover:scale-110">
+        <a
+          href="https://github.com/seekeren"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-600 hover:text-gray-900"
+          aria-label="GitHub"
+        >
+          <svg
+            class="h-7 w-7"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
+      </div>
+      
+
+      
+      
+
+      
+      
+      <div class="transform transition duration-200 hover:scale-110">
+        <a
+          href="mailto:1786723244@qq.com"
+          rel="noopener noreferrer"
+          class="text-gray-600 hover:text-gray-900"
+          aria-label="邮箱"
+        >
+          <svg
+            class="h-7 w-7"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"
+            />
+            <path
+              d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"
+            />
+          </svg>
+        </a>
+      </div>
+      
+    </div>
+
+    <div class="text-center mt-6 text-sm text-gray-500">
+      &copy; 2026 seekeren blog | Powered by <a href="https://github.com/Daucloud/hugo-theme-void" class="text-gray-600 hover:text-gray-900 hover:underline">hugo-theme-void</a> | <span id="busuanzi_container_site_pv" style="display: none;">Total visits: <span id="busuanzi_value_site_pv" class="text-gray-600"></span></span>
+    </div>
+    
+  </div>
+</div>
+
+  </footer>
+</body>
+</html>
