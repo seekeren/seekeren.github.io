@@ -15,8 +15,8 @@ menu:
     - name: 文章
       url: /archives/
       weight: 10
-    - name: 开发记录
-      url: /tags/dev/
+    - name: 搜索
+      url: /search/
       weight: 20
     - name: 生活记录
       url: /tags/life/
