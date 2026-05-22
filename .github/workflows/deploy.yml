@@ -21,7 +21,7 @@ jobs:
          run: |
           cd themes/void
           npm install
-          npm install -g @tailwindcss/cli
+          npm run build
 
       - uses: peaceiris/actions-hugo@v3
         with:
