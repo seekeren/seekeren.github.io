@@ -21,7 +21,6 @@ jobs:
          run: |
           cd themes/void
           npm install
-          sudo ln -sf $(pwd)/node_modules/.bin/tailwindcss /usr/local/bin/tailwindcss
 
       - uses: peaceiris/actions-hugo@v3
         with:
