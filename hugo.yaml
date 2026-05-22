@@ -12,15 +12,19 @@ params:
 
 menu:
   main:
+    - name: 文章
+      url: /archives/
+      weight: 10
     - name: 开发记录
       url: /tags/dev/
-      weight: 10
+      weight: 20
     - name: 生活记录
       url: /tags/life/
-      weight: 20
+      weight: 30
     - name: 标签
       url: /tags/
-      weight: 30
+      weight: 40
     - name: 关于
       url: /about/
-      weight: 40
+      weight: 50
+    
