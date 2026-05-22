@@ -18,9 +18,10 @@ jobs:
           node-version: '20'
 
       - name: Install Tailwind CSS
-        run: |
+         run: |
           cd themes/void
           npm install
+          npm install -g @tailwindcss/cli
 
       - uses: peaceiris/actions-hugo@v3
         with:
