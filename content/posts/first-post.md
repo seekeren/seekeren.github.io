@@ -2,8 +2,8 @@
 date = '2026-05-21T17:48:43+08:00'
 draft = false
 title = 'First Post'
-tags: ["标签1", "标签2"]
-categories: ["分类1"]
+tags: ["java"]
+categories: ["netty"]
 +++
 
 ```java
