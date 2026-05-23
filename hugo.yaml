@@ -24,10 +24,10 @@ params:
     - name: github
       url: "https://github.com/seekeren"
 
-# 封面图默认设置
-cover:
-  hiddenInList: true        # 列表页显示封面
-  hiddenInSingle: false      # 文章页显示封面
+  # 封面图默认设置
+  cover:
+    hiddenInList: true        # 列表页隐藏封面
+    hiddenInSingle: false     # 文章页显示封面
 
 outputs:
   home:
@@ -58,6 +58,7 @@ markup:
     renderer:
       unsafe: true             # 允许 HTML 嵌入 Markdown
   highlight:
-    style: github              # 代码高亮主题
-    lineNos: false             # 显示行号
-    
+    style: dracula             # 代码高亮主题（推荐：dracula/monokai/nord/github）
+    lineNos: true              # true 为显示
+    lineNumbersInTable: true   # 行号显示在表格中（更易选中代码）
+    noClasses: false           # 使用 CSS 类而不是内联样式
