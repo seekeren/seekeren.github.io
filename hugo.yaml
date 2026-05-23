@@ -14,15 +14,15 @@ params:
   TocOpen: false               # 目录默认折叠
   comments: true
 
-# 首页简介
-homeInfoParams:
-  Title: "Hi, 我是 seekeren 👋"
-  Content: "这里记录我的开发笔记和生活随想"
+  # 首页简介模式配置
+  homeInfoParams:
+    Title: "Hi, 我是 seekeren 👋"
+    Content: "这里记录我的开发笔记和生活随想"
 
-# 社交链接（首页显示）
-socialIcons:
-  - name: github
-    url: "https://github.com/seekeren"
+  # 社交链接（首页显示）
+  socialIcons:
+    - name: github
+      url: "https://github.com/seekeren"
 
 # 封面图默认设置
 cover:
