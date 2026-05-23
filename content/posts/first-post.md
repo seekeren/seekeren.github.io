@@ -1,10 +1,10 @@
-+++
-date = '2026-05-21T17:48:43+08:00'
-draft = false
-title = 'First Post'
+---
+date: '2026-05-21T17:48:43+08:00'
+draft: false
+title: 'First Post'
 tags: ["java"]
-categories: ["netty"]
-+++
+categories: ["gateway project"]
+---
 
 ```java
 public static void sendMsg(DataPacket prototype) {
@@ -21,4 +21,3 @@ public static void sendMsg(DataPacket prototype) {
     }
 
 ```
-
