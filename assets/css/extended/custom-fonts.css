@@ -49,3 +49,37 @@ code, pre {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
 }
 */
+
+/* 首页简介背景图片配置 */
+.home-info .entry {
+    background-image: url('/images/home-bg.jpg'); /* 替换为你的图片路径 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* 为简介内容添加半透明遮罩,确保文字可读性 */
+.home-info .entry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* 黑色半透明遮罩,可调整透明度 */
+    z-index: 1;
+}
+
+/* 确保简介内容在遮罩上方 */
+.home-info .entry > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* 如果使用浅色背景图片,可以使用白色遮罩 */
+
+.home-info .entry::before {
+    background: rgba(255, 255, 255, 0.7);
+}
+
