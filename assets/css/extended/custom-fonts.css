@@ -69,7 +69,7 @@ code, pre {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
+    /* background: rgba(0, 0, 0, 0.2); */
     z-index: 1;
     border-radius: var(--radius);
 }
@@ -81,8 +81,8 @@ code, pre {
 }
 
 /* 如果使用浅色背景图片,可以使用白色遮罩 */
-
+/* 
 .home-info .entry::before {
     background: rgba(255, 255, 255, 0.1);
-}
+} */
 
