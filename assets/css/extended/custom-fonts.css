@@ -83,6 +83,6 @@ code, pre {
 /* 如果使用浅色背景图片,可以使用白色遮罩 */
 
 .home-info .entry::before {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 1);
 }
 
