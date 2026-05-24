@@ -16,7 +16,7 @@ params:
 
   # 首页简介模式配置
   homeInfoParams:
-    Title: "Hi, 我是 seekeren 👋"
+    Title: "Hi,我是seekeren,seeker-ren, 探索人"
     Content: "这里记录我的开发笔记和生活随想"
 
   # 社交链接（首页显示）
