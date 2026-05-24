@@ -5,7 +5,7 @@
 
 /* 方案一：现代简洁风格（推荐）*/
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     font-size: 17px;
     line-height: 1.8;
     letter-spacing: 0.3px;
@@ -13,14 +13,14 @@ body {
 
 /* 标题字体优化 */
 h1, h2, h3, h4, h5, h6 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
 /* 代码块字体优化 */
 code, pre {
-    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Source Code Pro', 'Consolas', 'Monaco', monospace;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Source Code Pro', 'Consolas', 'Monaco', monospace !important;
     font-size: 14px;
     line-height: 1.6;
 }
@@ -51,28 +51,31 @@ code, pre {
 */
 
 /* 首页简介背景图片配置 */
-.home-info .entry {
-    background-image: url('/images/home-bg.jpg'); /* 替换为你的图片路径 */
+.home-info {
+    background-image: url('/images/home-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
 }
 
 /* 为简介内容添加半透明遮罩,确保文字可读性 */
-.home-info .entry::before {
+.home-info::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* 黑色半透明遮罩,可调整透明度 */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
+    border-radius: var(--radius);
 }
 
 /* 确保简介内容在遮罩上方 */
-.home-info .entry > * {
+.home-info > * {
     position: relative;
     z-index: 2;
 }
