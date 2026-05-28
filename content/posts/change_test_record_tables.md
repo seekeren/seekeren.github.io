@@ -35,9 +35,9 @@ import java.util.Map;
  */
 public class modifyTableCellValue {
     public static void main(String[] args) {
-        String filePath = "D:\\AllFiles\\IVCPS\\改测试报告\\IVCPS典型参考系统原型记录-20250525-原始.docx";
-        String xlsxPath = "D:\\AllFiles\\IVCPS\\改测试报告\\测试用例编号大全.xlsx";
-        String expectedOutcomeXlsxPath = "D:\\AllFiles\\IVCPS\\改测试报告\\场景预期结果.xlsx";
+        String filePath = "原始.docx";
+        String xlsxPath = "编号大全.xlsx";
+        String expectedOutcomeXlsxPath = "预期结果.xlsx";
         String outputPath = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new java.util.Date()) + "output.docx";
 
         try {
