@@ -13,10 +13,11 @@ params:
   ShowToc: true                # 显示目录
   TocOpen: false               # 目录默认折叠
   comments: true
+  dateFormat: "01/02,2006"
 
   # 首页简介模式配置
   homeInfoParams:
-    Title: "Hi,我是seekeren,探索人"
+    Title: "Hello, I'm seekeren, 探索人"
     # Content: " &nbsp;这里记录我的开发笔记和生活随想"
 
   # 社交链接（首页显示）

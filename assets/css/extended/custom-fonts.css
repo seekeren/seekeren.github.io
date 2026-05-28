@@ -91,6 +91,7 @@ code, pre {
     gap: 1rem;
 }
 .home-header-footer .entry-header {
+    font-size: 16px;
     flex: 1;
 }
 .home-header-footer .entry-footer {
