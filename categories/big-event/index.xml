@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Big-Event on seekeren blog</title><link>https://seekeren.github.io/categories/big-event/</link><description>Recent content in Big-Event on seekeren blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 05 Jun 2026 16:00:56 +0800</lastBuildDate><atom:link href="https://seekeren.github.io/categories/big-event/index.xml" rel="self" type="application/rss+xml"/><item><title>vue中的表单校验</title><link>https://seekeren.github.io/posts/vue-table-validate/</link><pubDate>Fri, 05 Jun 2026 16:00:56 +0800</pubDate><guid>https://seekeren.github.io/posts/vue-table-validate/</guid><description>&lt;p&gt;以下是一个表单的例子：我想说的是如果不加el-form中的ref,那么如果直接点击“提交”按钮，那么就会把错误的数据提交给后端。这是不对的&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Big-Event on seekeren blog</title><link>https://seekeren.github.io/categories/big-event/</link><description>Recent content in Big-Event on seekeren blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 05 Jun 2026 18:21:56 +0800</lastBuildDate><atom:link href="https://seekeren.github.io/categories/big-event/index.xml" rel="self" type="application/rss+xml"/><item><title>修改docx文档中表格的指定单元格</title><link>https://seekeren.github.io/posts/http-request-receive-methods/</link><pubDate>Fri, 05 Jun 2026 18:21:56 +0800</pubDate><guid>https://seekeren.github.io/posts/http-request-receive-methods/</guid><description>&lt;p&gt;整理http协议中，axios请求携带参数和对应Java后端Controller中接收方法&lt;/p&gt;
+&lt;h1 id="通用格式"&gt;通用格式&lt;/h1&gt;
+&lt;p&gt;axios.method(url, data, config) &lt;br&gt;
+// ↑ ↑ ↑
+// 地址 请求体 配置(params/headers等)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="get--查询参数"&gt;GET — 查询参数&lt;/h1&gt;
+&lt;p&gt;// axios
+request.get(&amp;rsquo;/user&amp;rsquo;, { params: { id: 1, name: &amp;lsquo;张三&amp;rsquo; } })
+// 实际请求: GET /user?id=1&amp;amp;name=张三
+// Java
+@GetMapping(&amp;quot;/user&amp;quot;)
+public Result get(@RequestParam Integer id, @RequestParam String name) { }&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="post--json-请求体"&gt;POST — JSON 请求体&lt;/h1&gt;
+&lt;p&gt;// axios
+request.post(&amp;rsquo;/user&amp;rsquo;, { name: &amp;lsquo;张三&amp;rsquo;, age: 20 })
+// 请求体: {&amp;ldquo;name&amp;rdquo;:&amp;ldquo;张三&amp;rdquo;,&amp;ldquo;age&amp;rdquo;:20}
+// Content-Type: application/json
+// Java
+@PostMapping(&amp;quot;/user&amp;quot;)
+public Result add(@RequestBody User user) { }&lt;/p&gt;</description></item><item><title>vue中的表单校验</title><link>https://seekeren.github.io/posts/vue-table-validate/</link><pubDate>Fri, 05 Jun 2026 16:00:56 +0800</pubDate><guid>https://seekeren.github.io/posts/vue-table-validate/</guid><description>&lt;p&gt;以下是一个表单的例子：我想说的是如果不加el-form中的ref,那么如果直接点击“提交”按钮，那么就会把错误的数据提交给后端。这是不对的&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
 &lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1

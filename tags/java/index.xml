@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Java on seekeren blog</title><link>https://seekeren.github.io/tags/java/</link><description>Recent content in Java on seekeren blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 28 May 2026 13:34:56 +0800</lastBuildDate><atom:link href="https://seekeren.github.io/tags/java/index.xml" rel="self" type="application/rss+xml"/><item><title>修改docx文档中表格的指定单元格</title><link>https://seekeren.github.io/posts/change_test_record_tables/</link><pubDate>Thu, 28 May 2026 13:34:56 +0800</pubDate><guid>https://seekeren.github.io/posts/change_test_record_tables/</guid><description>&lt;p&gt;xxxxxxxxxx public static void sendMsg(DataPacket prototype) {        for (Channel channel : clients) {            if (channel.isActive()) {                ByteBuf byteBuf = prototype.toByteBufMsg();                prototype.setPayload(byteBuf);                log.info(&amp;ldquo;体信息:{}&amp;rdquo;, CodecUtils.byteBufToHex(byteBuf));                log.info(&amp;ldquo;原始包中的buf: {}&amp;rdquo;, CodecUtils.byteBufToHex(prototype.getPayload()));                log.info(&amp;ldquo;发送消息给客户端: {}&amp;rdquo;, channel.remoteAddress());                channel.writeAndFlush(prototype);           }       }   }​java&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Java on seekeren blog</title><link>https://seekeren.github.io/tags/java/</link><description>Recent content in Java on seekeren blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 05 Jun 2026 18:21:56 +0800</lastBuildDate><atom:link href="https://seekeren.github.io/tags/java/index.xml" rel="self" type="application/rss+xml"/><item><title>修改docx文档中表格的指定单元格</title><link>https://seekeren.github.io/posts/http-request-receive-methods/</link><pubDate>Fri, 05 Jun 2026 18:21:56 +0800</pubDate><guid>https://seekeren.github.io/posts/http-request-receive-methods/</guid><description>&lt;p&gt;整理http协议中，axios请求携带参数和对应Java后端Controller中接收方法&lt;/p&gt;
+&lt;h1 id="通用格式"&gt;通用格式&lt;/h1&gt;
+&lt;p&gt;axios.method(url, data, config) &lt;br&gt;
+// ↑ ↑ ↑
+// 地址 请求体 配置(params/headers等)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="get--查询参数"&gt;GET — 查询参数&lt;/h1&gt;
+&lt;p&gt;// axios
+request.get(&amp;rsquo;/user&amp;rsquo;, { params: { id: 1, name: &amp;lsquo;张三&amp;rsquo; } })
+// 实际请求: GET /user?id=1&amp;amp;name=张三
+// Java
+@GetMapping(&amp;quot;/user&amp;quot;)
+public Result get(@RequestParam Integer id, @RequestParam String name) { }&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="post--json-请求体"&gt;POST — JSON 请求体&lt;/h1&gt;
+&lt;p&gt;// axios
+request.post(&amp;rsquo;/user&amp;rsquo;, { name: &amp;lsquo;张三&amp;rsquo;, age: 20 })
+// 请求体: {&amp;ldquo;name&amp;rdquo;:&amp;ldquo;张三&amp;rdquo;,&amp;ldquo;age&amp;rdquo;:20}
+// Content-Type: application/json
+// Java
+@PostMapping(&amp;quot;/user&amp;quot;)
+public Result add(@RequestBody User user) { }&lt;/p&gt;</description></item><item><title>修改docx文档中表格的指定单元格</title><link>https://seekeren.github.io/posts/change_test_record_tables/</link><pubDate>Thu, 28 May 2026 13:34:56 +0800</pubDate><guid>https://seekeren.github.io/posts/change_test_record_tables/</guid><description>&lt;p&gt;xxxxxxxxxx public static void sendMsg(DataPacket prototype) {        for (Channel channel : clients) {            if (channel.isActive()) {                ByteBuf byteBuf = prototype.toByteBufMsg();                prototype.setPayload(byteBuf);                log.info(&amp;ldquo;体信息:{}&amp;rdquo;, CodecUtils.byteBufToHex(byteBuf));                log.info(&amp;ldquo;原始包中的buf: {}&amp;rdquo;, CodecUtils.byteBufToHex(prototype.getPayload()));                log.info(&amp;ldquo;发送消息给客户端: {}&amp;rdquo;, channel.remoteAddress());                channel.writeAndFlush(prototype);           }       }   }​java&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;将指定的单元格替换为一个xlsx文件中的对应某列值，或者说List中的值&lt;/li&gt;
 &lt;li&gt;将指定的单元格替换为空行&lt;/li&gt;
