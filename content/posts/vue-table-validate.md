@@ -1,5 +1,5 @@
 ---
-date: '2026-6-5 16:00:56'
+date: '2026-6-5T16:00:56+08:00'
 draft: false
 title: 'vue中的表单校验'
 tags: ["Vue"]
