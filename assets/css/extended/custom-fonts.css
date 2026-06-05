@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 代码块字体优化 */
 code, pre {
     font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Source Code Pro', 'Consolas', 'Monaco', monospace !important;
-    font-size: 14px;
+    font-size: 17px;
     line-height: 1.6;
 }
 

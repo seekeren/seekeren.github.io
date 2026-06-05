@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Categories | seekeren blog</title>
+<title>Vue | seekeren blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/categories/">
+<link rel="canonical" href="http://localhost:1313/tags/vue/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.412fefda5f2d557081ead8919fa4897bff2194b9fe2289415b69b153bcad531b.css" integrity="sha256-QS/v2l8tVXCB6tiRn6SJe/8hlLn&#43;IolBW2mxU7ytUxs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/vue/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/vue/">
 <noscript>
     <style>
         #theme-toggle,
@@ -103,7 +103,7 @@
             </li>
             <li>
                 <a href="http://localhost:1313/categories/" title="分类">
-                    <span class="active">分类</span>
+                    <span>分类</span>
                 </a>
             </li>
             <li>
@@ -124,22 +124,39 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-<header class="page-header">
-    <h1>Categories</h1>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    Vue
+  </h1>
 </header>
 
-<ul class="terms-tags">
-            <li>
-                <a href="http://localhost:1313/categories/big-event/">Big-Event <sup><strong><sup>1</sup></strong></sup> </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/gateway-project/">Gateway Project <sup><strong><sup>1</sup></strong></sup> </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/gq/">Gq <sup><strong><sup>1</sup></strong></sup> </a>
-            </li>
-</ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">vue中的表单校验
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>以下是一个表单的例子：我想说的是如果不加el-form中的ref,那么如果直接点击“提交”按钮，那么就会把错误的数据提交给后端。这是不对的
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 &lt;script lang=&#34;ts&#34; setup&gt; const form = ref({ oldPassword: &#39;&#39;, newPassword: &#39;&#39;, rePassword: &#39;&#39; }) const formRef = ref() const onSubmit = async () =&gt; { await formRef.value.validate() console.log(form.value) await updatePasswordService(form.value) ElMessage.success(&#39;密码更新成功&#39;) router.push(&#39;/login&#39;) } &lt;/script&gt; &lt;template&gt; &lt;el-form ref=&#34;formRef&#34; :model=&#34;form&#34; label-width=&#34;auto&#34; style=&#34;max-width: 600px&#34; :rules=&#34;rules&#34;&gt; &lt;el-form-item label=&#34;旧密码&#34; prop=&#34;oldPassword&#34;&gt; &lt;el-input v-model=&#34;form.oldPassword&#34; type=&#34;password&#34; /&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&#34;新密码&#34; prop=&#34;newPassword&#34;&gt; &lt;el-input v-model=&#34;form.newPassword&#34; type=&#34;password&#34; /&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&#34;重复新密码&#34; prop=&#34;rePassword&#34;&gt; &lt;el-input v-model=&#34;form.rePassword&#34; type=&#34;password&#34; /&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&#34; &#34;&gt; &lt;el-button type=&#34;primary&#34; @click=&#34;onSubmit&#34;&gt;确认提交&lt;/el-button&gt; &lt;/el-form-item&gt; &lt;/el-form&gt; &lt;/template&gt; 如代码所示，需要给表单el-form一个ref=“formRef&#34;属性，指向一个空的ref变量。然后在submit方法中 await formRef.value.validate()
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-05 16:00:56 +0800 CST'>06/05,2026</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to vue中的表单校验" href="http://localhost:1313/posts/vue-table-validate/"></a>
+</article>
     </main>
     
 <footer class="footer">
