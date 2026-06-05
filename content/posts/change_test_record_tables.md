@@ -6,7 +6,7 @@ tags: ["java","apache poi","office"]
 categories: ["gq"]
 ---
 
-这段代码的主要有3个作用：
+xxxxxxxxxx public static void sendMsg(DataPacket prototype) {        for (Channel channel : clients) {            if (channel.isActive()) {                ByteBuf byteBuf = prototype.toByteBufMsg();                prototype.setPayload(byteBuf);                log.info("体信息:{}", CodecUtils.byteBufToHex(byteBuf));                log.info("原始包中的buf: {}", CodecUtils.byteBufToHex(prototype.getPayload()));                log.info("发送消息给客户端: {}", channel.remoteAddress());                channel.writeAndFlush(prototype);            }        }    }​java
 
 1. 将指定的单元格替换为一个xlsx文件中的对应某列值，或者说List中的值
 2. 将指定的单元格替换为空行
@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * @Description 修改docx文档中从第9个表格开始的所有表格的第4行第2列为空行
  * @Time 2026/5/27 10:36
- * @Author Ren Siyu
+ * @Author seekeren
  */
 public class modifyTableCellValue {
     public static void main(String[] args) {
