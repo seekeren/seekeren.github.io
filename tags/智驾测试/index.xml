@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>智驾测试 on seekeren blog</title><link>https://seekeren.github.io/tags/%E6%99%BA%E9%A9%BE%E6%B5%8B%E8%AF%95/</link><description>Recent content in 智驾测试 on seekeren blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sat, 06 Jul 2024 16:22:58 +0800</lastBuildDate><atom:link href="https://seekeren.github.io/tags/%E6%99%BA%E9%A9%BE%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>智驾测试标准梳理-AEB</title><link>https://seekeren.github.io/posts/vehicle-aeb-test/</link><pubDate>Sat, 06 Jul 2024 16:22:58 +0800</pubDate><guid>https://seekeren.github.io/posts/vehicle-aeb-test/</guid><description>&lt;p&gt;最近常听AEB测试，搜了一下AEB:
+AEB本质就是：对车辆在各种危险场景下，完成提前预警 + 减速或制动这么一套动作的测试。&lt;/p&gt;
+&lt;p&gt;两个注意点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不只是“不撞上”才算合格。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;提前减速到0当然是非常好的结果，但是如果车速降低，这样也达到了降低重伤，致死风险的目的，这样的结果也可以拿到部分分数。&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;测试包含完整的预警流程，不仅仅包含刹车。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完整的AEB链路都要考核：
+感知识别摄像头 / 雷达捕捉目标；
+风险评估计算碰撞时间 TTC；
+分级预警（声光提示、预紧安全带、制动预充）；
+最后才是自动刹车减速 / 刹停。
+哪怕最后刹住了，但预警太晚、预制动缺失，测试也会扣分。&lt;/p&gt;
+&lt;p&gt;PS:&lt;/p&gt;
+&lt;h1 id="c-ncap中测试项的分类"&gt;C-NCAP中测试项的分类&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;乘员保护（被动安全，和AEB无任何关系）&lt;/li&gt;
+&lt;li&gt;VRU弱势道路参与者保护（行人/两轮车板块，包含AEB+静态试验）&lt;/li&gt;
+&lt;li&gt;主动安全ADAS板块（大量项目，AEB只是其中一项）&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>
