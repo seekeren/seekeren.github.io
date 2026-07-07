@@ -1,4 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on seekeren blog</title><link>https://seekeren.github.io/posts/</link><description>Recent content in Posts on seekeren blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 05 Jun 2026 18:21:56 +0800</lastBuildDate><atom:link href="https://seekeren.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>RESTFUL请求的前后端传递参数对照</title><link>https://seekeren.github.io/posts/http-request-receive-methods/</link><pubDate>Fri, 05 Jun 2026 18:21:56 +0800</pubDate><guid>https://seekeren.github.io/posts/http-request-receive-methods/</guid><description>&lt;p&gt;整理http协议中，axios请求携带参数和对应Java后端Controller中接收方法&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on seekeren blog</title><link>https://seekeren.github.io/posts/</link><description>Recent content in Posts on seekeren blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Mon, 06 Jul 2026 19:14:33 +0800</lastBuildDate><atom:link href="https://seekeren.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>消除git diff中的敏感信息</title><link>https://seekeren.github.io/posts/eliminate-git-diff/</link><pubDate>Mon, 06 Jul 2026 19:14:33 +0800</pubDate><guid>https://seekeren.github.io/posts/eliminate-git-diff/</guid><description>&lt;h1 id="起因"&gt;起因&lt;/h1&gt;
+&lt;p&gt;起因是这样的，我在GitHub新开了一个项目，是智能体相关的，代码中写明了一个敏感值，我意识到之后赶紧删除了，然后新提交了。
+但是，git的diff可以查看代码的改动处，所以还是能看到这个敏感值。敏感信息还是要不可见的。
+大致的解决办法如下，通过一个git的过滤仓库的工具，把敏感信息替换成一个默认值，先把本地的提交历史全部改一遍，然后同步到远程仓库。
+git是真牛啊，连我这样的需求都能满足，强。&lt;/p&gt;
+&lt;h1 id="解决过程"&gt;解决过程&lt;/h1&gt;
+&lt;p&gt;安装filter-repo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pip install git-filter-repo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在项目根目录下创建一个replace.txt文件，用于正则表达式替换敏感值。在TXT文件中写入如下内容，意思就是将api_key的值替换为REDACTED，并支持等号两边的空格。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;regex:api_key&lt;span class="se"&gt;\s&lt;/span&gt;*&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\s&lt;/span&gt;*.+&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt;api_key&lt;span class="o"&gt;=&lt;/span&gt;REDACTED
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 全仓库所有文件、所有提交替换敏感字符&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git filter-repo --replace-text replace.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果仅需要限定某个文件做替换:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git filter-repo --path config/application.yml --replace-text replace.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;一般执行完这步之后，会清除与远程仓库的关联，所以需要重新关联一下远程仓库的地址。我是从idea的manage remote添加的。&lt;/p&gt;
+&lt;p&gt;校验：(可选)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 全局搜索所有历史是否还有敏感明文&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git log --all -S &lt;span class="s2"&gt;&amp;#34;abc123456&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 无输出=清理成功；有输出说明规则没匹配到，重新调整replace.txt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 随机查看旧提交diff验证&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git log -p --all &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;#34;abc123456&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;推送所有分支：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 推送所有分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git push origin --force --all
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 推送所有标签&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git push origin --force --tags
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>RESTFUL请求的前后端传递参数对照</title><link>https://seekeren.github.io/posts/http-request-receive-methods/</link><pubDate>Fri, 05 Jun 2026 18:21:56 +0800</pubDate><guid>https://seekeren.github.io/posts/http-request-receive-methods/</guid><description>&lt;p&gt;整理http协议中，axios请求携带参数和对应Java后端Controller中接收方法&lt;/p&gt;
 &lt;h1 id="通用格式"&gt;通用格式&lt;/h1&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;axios.method(url, data, config)
 // ↑ ↑ ↑
