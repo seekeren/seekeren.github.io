@@ -23,7 +23,21 @@ ConfigMap只配置了2个IP地址，而application.yml中配置了4个，但是�
 不只是“不撞上”才算合格。 提前减速到0当然是非常好的结果，但是如果车速降低，这样也达到了降低重伤，致死风险的目的，这样的结果也可以拿到部分分数。
 测试包含完整的预警流程，不仅仅包含刹车。 完整的AEB链路都要考核： 感知识别摄像头 / 雷达捕捉目标； 风险评估计算碰撞时间 TTC； 分级预警（声光提示、预紧安全带、制动预充）； 最后才是自动刹车减速 / 刹停。 哪怕最后刹住了，但预警太晚、预制动缺失，测试也会扣分。
 PS:
-C-NCAP中测试项的分类 乘员保护（被动安全，和AEB无任何关系） VRU弱势道路参与者保护（行人/两轮车板块，包含AEB+静态试验） 主动安全ADAS板块（大量项目，AEB只是其中一项）</p></div><footer class=entry-footer><span title='2024-07-06 16:22:58 +0800 +0800'>07/06,2024</span>&nbsp;·&nbsp;<span>1 min</span></footer><a class=entry-link aria-label="post link to 智驾测试标准梳理-AEB" href=https://seekeren.github.io/posts/vehicle-aeb-test/></a></article></main><footer class=footer><span>&copy; 2026 <a href=https://seekeren.github.io/>seekeren blog</a></span> ·
+C-NCAP中测试项的分类 乘员保护（被动安全，和AEB无任何关系） VRU弱势道路参与者保护（行人/两轮车板块，包含AEB+静态试验） 主动安全ADAS板块（大量项目，AEB只是其中一项）</p></div><footer class=entry-footer><span title='2024-07-06 16:22:58 +0800 +0800'>07/06,2024</span>&nbsp;·&nbsp;<span>1 min</span></footer><a class=entry-link aria-label="post link to 智驾测试标准梳理-AEB" href=https://seekeren.github.io/posts/vehicle-aeb-test/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>maven项目启动失败排查</h2></header><div class=entry-content><p>背景 从远程仓库克隆了系统代码到本地，但是在vscode种右键运行失败。
+解决 项目是一个多模块的项目，其中的一个模块下载了第三方的jar包，需要把这些jar包安装到本地仓库，然后才能在pom中引入使用。
+直接在终端中cd到对应模块执行
+1 2 3 mvn install:install-file -DgroupId=onbon -DartifactId=bx06.message -Dversion=0.6.0-SNAPSHOT # 或者 mvn install 然后cd到项目根目录，构建依赖的模块
+1 mvn clean install -DskipTests 安装完依赖之后，AI的意思是可以通过以下指令执行代码：
+1 2 cd xx-xxxxxxxxx-admin mvn spring-boot:run -Dspring-boot.run.profiles=local 但是我想要通过vscode的run java执行，因为我举得这个功能很方便使用。但是失败了。
+原因是vscode的收集classpath过程失败：
+对于单模块项目，直接扫描 pom.xml 中的依赖，一般正常 对于多模块项目，可能只解析当前模块，忽略模块间依赖 vscode 需要正确识别 xx-xxxxxxxxx-admin 依赖了 gq-test-admin，需要将其 classpath 加入。
+通过上述mvn启动却是可以的，然后我就好奇：
+vscode中的run java，idea中的run和maven中的run有什么异同。
+以下是AI总结的对比：
+其实主要是第5行多模块支持，VS Code Run Java可能存在问题
+维度 VS Code Run Java IDEA Run Maven spring-boot:run 启动方式 java -cp 直接运行 java -cp 直接运行 mvn spring-boot:run
+底层本质还是java -cp 编译方式 Eclipse JDT 编译 IDEA Make 编译 Maven 编译 Classpath Eclipse JDT 解析 IDEA 依赖解析 Maven 依赖管理 多模块支持 ⚠️ 可能有问题 ✅ 完美支持 ✅ 完美支持 启动速度 快（增量） 快（增量） 慢（需编译所有依赖） 配置复杂度 低（零配置） 低（零配置） 中（命令行参数） 依赖一致性 ⚠️ 可能不一致 ⚠️ 可能不一致 ✅ 与打包一致 推荐场景 简单项目 开发调试 生产前验证 所以相对好的办法就是通过maven启动项目，完美支持多模块项目启动
+...</p></div><footer class=entry-footer><span title='2024-03-31 12:01:56 +0800 +0800'>03/31,2024</span>&nbsp;·&nbsp;<span>4 min</span></footer><a class=entry-link aria-label="post link to maven项目启动失败排查" href=https://seekeren.github.io/posts/maven-project-boot-fail/></a></article></main><footer class=footer><span>&copy; 2026 <a href=https://seekeren.github.io/>seekeren blog</a></span> ·
 <span>Powered by
 <a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
 <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>

@@ -1105,4 +1105,112 @@ AEB本质就是：对车辆在各种危险场景下，完成提前预警 + 减�
 &lt;li&gt;乘员保护（被动安全，和AEB无任何关系）&lt;/li&gt;
 &lt;li&gt;VRU弱势道路参与者保护（行人/两轮车板块，包含AEB+静态试验）&lt;/li&gt;
 &lt;li&gt;主动安全ADAS板块（大量项目，AEB只是其中一项）&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>关于</title><link>https://seekeren.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://seekeren.github.io/about/</guid><description>&lt;p&gt;你好，我是seekeren，探索人，现在北京，是一个智能网联工程师，这个自留地记录我的平凡生活。&lt;/p&gt;</description></item></channel></rss>
+&lt;/ol&gt;</description></item><item><title>maven项目启动失败排查</title><link>https://seekeren.github.io/posts/maven-project-boot-fail/</link><pubDate>Sun, 31 Mar 2024 12:01:56 +0800</pubDate><guid>https://seekeren.github.io/posts/maven-project-boot-fail/</guid><description>&lt;h1 id="背景"&gt;背景&lt;/h1&gt;
+&lt;p&gt;从远程仓库克隆了系统代码到本地，但是在vscode种右键运行失败。&lt;/p&gt;
+&lt;h1 id="解决"&gt;解决&lt;/h1&gt;
+&lt;p&gt;项目是一个多模块的项目，其中的一个模块下载了第三方的jar包，需要把这些jar包安装到本地仓库，然后才能在pom中引入使用。&lt;/p&gt;
+&lt;p&gt;直接在终端中cd到对应模块执行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mvn install:install-file -DgroupId&lt;span class="o"&gt;=&lt;/span&gt;onbon -DartifactId&lt;span class="o"&gt;=&lt;/span&gt;bx06.message -Dversion&lt;span class="o"&gt;=&lt;/span&gt;0.6.0-SNAPSHOT
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 或者&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mvn install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后cd到项目根目录，构建依赖的模块&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mvn clean install -DskipTests
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装完依赖之后，AI的意思是可以通过以下指令执行代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; xx-xxxxxxxxx-admin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mvn spring-boot:run -Dspring-boot.run.profiles&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;但是我想要通过vscode的run java执行，因为我举得这个功能很方便使用。但是失败了。&lt;/p&gt;
+&lt;p&gt;原因是vscode的收集classpath过程失败：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于单模块项目，直接扫描 &lt;code&gt;pom.xml&lt;/code&gt; 中的依赖，一般正常&lt;/li&gt;
+&lt;li&gt;对于多模块项目，可能只解析当前模块，忽略模块间依赖&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;vscode 需要正确识别 &lt;code&gt;xx-xxxxxxxxx-admin&lt;/code&gt; 依赖了 &lt;code&gt;gq-test-admin&lt;/code&gt;，需要将其 classpath 加入。&lt;/p&gt;
+&lt;p&gt;通过上述mvn启动却是可以的，然后我就好奇：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;vscode中的run java，idea中的run和maven中的run有什么异同。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以下是AI总结的对比：&lt;/p&gt;
+&lt;p&gt;其实主要是第5行多模块支持，VS Code Run Java可能存在问题&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;维度&lt;/th&gt;
+&lt;th&gt;VS Code Run Java&lt;/th&gt;
+&lt;th&gt;IDEA Run&lt;/th&gt;
+&lt;th&gt;Maven spring-boot:run&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;启动方式&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;java -cp&lt;/code&gt; 直接运行&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;java -cp&lt;/code&gt; 直接运行&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mvn spring-boot:run&lt;/code&gt;&lt;br /&gt;底层本质还是&lt;code&gt;java -cp&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;编译方式&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Eclipse JDT 编译&lt;/td&gt;
+&lt;td&gt;IDEA Make 编译&lt;/td&gt;
+&lt;td&gt;Maven 编译&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Classpath&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Eclipse JDT 解析&lt;/td&gt;
+&lt;td&gt;IDEA 依赖解析&lt;/td&gt;
+&lt;td&gt;Maven 依赖管理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;多模块支持&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;⚠️ 可能有问题&lt;/td&gt;
+&lt;td&gt;✅ 完美支持&lt;/td&gt;
+&lt;td&gt;✅ 完美支持&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;启动速度&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;快（增量）&lt;/td&gt;
+&lt;td&gt;快（增量）&lt;/td&gt;
+&lt;td&gt;慢（需编译所有依赖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;配置复杂度&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;低（零配置）&lt;/td&gt;
+&lt;td&gt;低（零配置）&lt;/td&gt;
+&lt;td&gt;中（命令行参数）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;依赖一致性&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;⚠️ 可能不一致&lt;/td&gt;
+&lt;td&gt;⚠️ 可能不一致&lt;/td&gt;
+&lt;td&gt;✅ 与打包一致&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;推荐场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;简单项目&lt;/td&gt;
+&lt;td&gt;开发调试&lt;/td&gt;
+&lt;td&gt;生产前验证&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;所以相对好的办法就是通过maven启动项目，完美支持多模块项目启动&lt;/p&gt;</description></item><item><title>关于</title><link>https://seekeren.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://seekeren.github.io/about/</guid><description>&lt;p&gt;你好，我是seekeren，探索人，现在北京，是一个智能网联工程师，这个自留地记录我的平凡生活。&lt;/p&gt;</description></item></channel></rss>
